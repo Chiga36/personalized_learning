@@ -1,76 +1,132 @@
 import React from 'react';
-import { Briefcase, Target, TrendingUp, Award } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from './card';
+import { Book, Briefcase, Target, TrendingUp, DollarSign, GraduationCap, Code, Database, Brain, LineChart } from 'lucide-react';
 
-const CareerPath = () => {
+const StudentCareerAnalysis = () => {
+  // Sample student skills/subjects - this could be passed as props in a real application
+  const studentSubjects = [
+    { name: 'Programming', proficiency: 'Advanced', icon: Code },
+    { name: 'Database Management', proficiency: 'Intermediate', icon: Database },
+    { name: 'Machine Learning', proficiency: 'Basic', icon: Brain },
+    { name: 'Statistics', proficiency: 'Intermediate', icon: LineChart },
+  ];
+
+  const careerPaths = [
+    {
+      title: 'Software Developer',
+      description: 'Build applications and systems using programming skills',
+      demand: 'High demand across industries',
+      icon: Code
+    },
+    {
+      title: 'Database Administrator',
+      description: 'Manage and optimize database systems',
+      demand: 'Steady growth in enterprise companies',
+      icon: Database
+    },
+    {
+      title: 'Data Analyst',
+      description: 'Analyze data and create insights for businesses',
+      demand: 'Growing demand in all sectors',
+      icon: LineChart
+    }
+  ];
+
+  const sideOpportunities = [
+    {
+      title: 'Freelance Programming',
+      platform: 'GitHub, Upwork, Freelancer',
+      description: 'Develop websites and applications for clients'
+    },
+    {
+      title: 'Online Teaching',
+      platform: 'Udemy, Coursera',
+      description: 'Create programming and database courses'
+    },
+    {
+      title: 'Technical Writing',
+      platform: 'Medium, Dev.to',
+      description: 'Write tutorials and technical documentation'
+    }
+  ];
+
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Career Path Analysis</h1>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Your Skills Profile</h2>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Target className="w-5 h-5 text-indigo-600" />
-                <span>Problem Solving</span>
-              </div>
-              <div className="w-32 bg-gray-200 rounded-full h-2">
-                <div className="bg-indigo-600 h-2 rounded-full" style={{ width: '85%' }}></div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <TrendingUp className="w-5 h-5 text-green-600" />
-                <span>Data Analysis</span>
-              </div>
-              <div className="w-32 bg-gray-200 rounded-full h-2">
-                <div className="bg-green-600 h-2 rounded-full" style={{ width: '75%' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Recommended Career Paths</h2>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-              <div className="bg-purple-100 p-3 rounded-lg">
-                <Briefcase className="w-5 h-5 text-purple-600" />
-              </div>
-              <div>
-                <p className="font-medium">Data Scientist</p>
-                <p className="text-sm text-gray-600">High demand in tech companies</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-              <div className="bg-blue-100 p-3 rounded-lg">
-                <Award className="w-5 h-5 text-blue-600" />
-              </div>
-              <div>
-                <p className="font-medium">Business Analyst</p>
-                <p className="text-sm text-gray-600">Growing field in consulting</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-          <h2 className="text-lg font-semibold mb-4">Side Income Opportunities</h2>
+    <div className="space-y-6 p-4">
+      {/* Skills Profile Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <GraduationCap className="h-6 w-6" />
+            Subject Profile
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <h3 className="font-medium mb-2">Freelance Data Analysis</h3>
-              <p className="text-sm text-gray-600">Offer data analysis services on platforms like Upwork</p>
-            </div>
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <h3 className="font-medium mb-2">Online Tutoring</h3>
-              <p className="text-sm text-gray-600">Share your knowledge through online teaching platforms</p>
-            </div>
+            {studentSubjects.map((subject) => (
+              <div key={subject.name} className="flex items-center p-3 border rounded-lg">
+                <subject.icon className="h-5 w-5 mr-3 text-blue-500" />
+                <div>
+                  <div className="font-medium">{subject.name}</div>
+                  <div className="text-sm text-gray-500">{subject.proficiency}</div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
+
+      {/* Career Paths Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Briefcase className="h-6 w-6" />
+            Recommended Career Paths
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {careerPaths.map((career) => (
+              <div key={career.title} className="p-4 border rounded-lg">
+                <div className="flex items-center gap-2 mb-2">
+                  <career.icon className="h-5 w-5 text-blue-500" />
+                  <h3 className="font-medium">{career.title}</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-2">{career.description}</p>
+                <div className="flex items-center gap-1 text-sm text-green-600">
+                  <Target className="h-4 w-4" />
+                  {career.demand}
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Side Income Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <DollarSign className="h-6 w-6" />
+            Side Income Opportunities
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {sideOpportunities.map((opportunity) => (
+              <div key={opportunity.title} className="p-4 border rounded-lg">
+                <h3 className="font-medium mb-2">{opportunity.title}</h3>
+                <div className="text-sm text-gray-600 mb-1">{opportunity.description}</div>
+                <div className="text-sm text-blue-600">
+                  <span className="font-medium">Platforms: </span>
+                  {opportunity.platform}
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };
 
-export default CareerPath;
+export default StudentCareerAnalysis;
