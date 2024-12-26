@@ -1,10 +1,14 @@
 import React from 'react';
 import { BookOpen, Brain, Activity, Trophy, TrendingUp } from 'lucide-react';
 
-const Dashboard = () => {
+interface DashboardProps {
+  userName?: string;
+}
+
+const Dashboard: React.FC<DashboardProps> = ({ userName = 'User' }) => {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Welcome back, John!</h1>
+      <h1 className="text-2xl font-bold text-gray-800">Welcome back, {userName}!</h1>
       
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

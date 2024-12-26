@@ -57,7 +57,7 @@ function App() {
       case 'career-path':
         return <CareerPath />;
       default:
-        return <Dashboard />;
+        return <Dashboard userName={userData?.name} />;
     }
   };
 
@@ -97,7 +97,7 @@ function App() {
           path="/dashboard" 
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Dashboard userName={userData?.name} />
             </ProtectedRoute>
           } 
         />
@@ -150,6 +150,11 @@ function App() {
 }
 
 export default App;
+
+////////////////////////////////////////////////////////////////////
+
+
+
 
 //////////////////////////////////////////////////////////
 
